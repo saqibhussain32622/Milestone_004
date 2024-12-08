@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="h1">Editable Resume Builder By Saqib Husain</h1>
+
+    <h2>Resume Preview (Click to Edit)</h2>
+    <div id="resume-preview">
+        <h3 contenteditable="true" id="preview-name">[Your Name]</h3>
+        <p><strong>Email:</strong> <span contenteditable="true" id="preview-email">[Your Email]</span></p>
+        <p><strong>Phone:</strong> <span contenteditable="true" id="preview-phone">[Your Phone]</span></p>
+        <p><strong>Education:</strong> <span contenteditable="true" id="preview-education">[Your Education]</span></p>
+        <p><strong>Experience:</strong> <span contenteditable="true" id="preview-experience">[Your Experience]</span></p>
+        <p><strong>Skills:</strong> <span contenteditable="true" id="preview-skills">[Your Skills]</span></p>
+    </div>
+
+    <form id="resume-form">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+        </fieldset><br><br>
+
+        <fieldset>
+            <legend>Education</legend>
+            <label for="education">Education:</label>
+            <input type="text" id="education" name="education" required><br><br>
+        </fieldset><br><br>
+
+        <fieldset>
+            <legend>Experience</legend>
+            <label for="experience">Experience:</label>
+            <input type="text" id="experience" name="experience" required><br><br>
+        </fieldset><br><br>
+
+        <fieldset>
+            <legend>Skills</legend>
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills" required><br><br>
+        </fieldset><br><br>
+
+        <button type="submit">Update Resume</button>
+    </form>
+    
+    
+
+    <script>
+        document.getElementById('resume-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('skills').value;
+
+            // Update preview section
+            document.getElementById('preview-name').innerText = name;
+            document.getElementById('preview-email').innerText = email;
+            document.getElementById('preview-phone').innerText = phone;
+            document.getElementById('preview-education').innerText = education;
+            document.getElementById('preview-experience').innerText = experience;
+            document.getElementById('preview-skills').innerText = skills;
+        });
+
+        // Save the edited content from the preview to form inputs
+        document.getElementById('resume-preview').addEventListener('input', function() {
+            const name = document.getElementById('preview-name').innerText;
+            const email = document.getElementById('preview-email').innerText;
+            const phone = document.getElementById('preview-phone').innerText;
+            const education = document.getElementById('preview-education').innerText;
+            const experience = document.getElementById('preview-experience').innerText;
+            const skills = document.getElementById('preview-skills').innerText;
+
+            // Update form inputs with preview values
+            document.getElementById('name').value = name;
+            document.getElementById('email').value = email;
+            document.getElementById('phone').value = phone;
+            document.getElementById('education').value = education;
+            document.getElementById('experience').value = experience;
+            document.getElementById('skills').value = skills;
+        });
+    </script>
+</body>
+</html>
